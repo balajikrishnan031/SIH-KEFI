@@ -6,6 +6,25 @@
 
 ---
 
+## 👥 Official Team Details (Team DEKO)
+
+* **Team Name**: **DEKO**
+* **Team ID**: `141444`
+* **Team Leader**: **BALAJI P**
+* **Institute**: **University College of Engineering, Panruti**
+
+### Team Roster:
+| Role | Member Name | Email | Phone | Gender |
+| :--- | :--- | :--- | :--- | :--- |
+| **LEADER** | **BALAJI P** | balajikrishnan031@gmail.com | 9342636595 | Male |
+| **TEAM_MEMBER** | **NAVANEETHAM V** | er.navaneetham@gmail.com | 9487461627 | Female |
+| **TEAM_MEMBER** | **MALINI V** | malini28102005v@gmail.com | 8807984385 | Female |
+| **TEAM_MEMBER** | **DHAVAN R G** | rgdhavan50@gmail.com | 9342529181 | Male |
+| **TEAM_MEMBER** | **DEEBIKA S** | deebikasivaprakasam@gmail.com | 6380433293 | Female |
+| **TEAM_MEMBER** | **DHARA R** | dhararamesh2416@gmail.com | 9043644162 | Female |
+
+---
+
 ## 🏛️ Project Identity & Greek Origin
 
 * **Brand Name**: **KEFI AI** (4 Letters)

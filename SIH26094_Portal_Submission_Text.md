@@ -2,6 +2,24 @@
 
 ---
 
+## 👥 OFFICIAL TEAM DETAILS
+- **Team Name**: DEKO
+- **Team ID**: 141444
+- **Team Leader Name**: BALAJI P
+- **College Name**: University College of Engineering, Panruti
+
+### Team Members Roster:
+| Role | Member Name | Email | Phone | Gender |
+| :--- | :--- | :--- | :--- | :--- |
+| **LEADER** | BALAJI P | balajikrishnan031@gmail.com | 9342636595 | Male |
+| **TEAM_MEMBER** | NAVANEETHAM V | er.navaneetham@gmail.com | 9487461627 | Female |
+| **TEAM_MEMBER** | MALINI V | malini28102005v@gmail.com | 8807984385 | Female |
+| **TEAM_MEMBER** | DHAVAN R G | rgdhavan50@gmail.com | 9342529181 | Male |
+| **TEAM_MEMBER** | DEEBIKA S | deebikasivaprakasam@gmail.com | 6380433293 | Female |
+| **TEAM_MEMBER** | DHARA R | dhararamesh2416@gmail.com | 9043644162 | Female |
+
+---
+
 ## 📌 FIELD 1: Idea Title (Max 100 Characters)
 **Copy & Paste into Portal:**
 ```text
@@ -23,11 +41,14 @@ MedTech / BioTech / HealthTech
 ## 📌 FIELD 3: Abstract / Summary (Max 10,000 Characters)
 **Copy & Paste into Portal:**
 ```text
-PROBLEM STATEMENT OVERVIEW & CONTEXT (SIH26094 - MoSJE):
+TEAM & PROJECT OVERVIEW (Team DEKO | Team ID: 141444):
+Developed by Team DEKO from University College of Engineering, Panruti (Team Leader: BALAJI P), KEFI AI is an enterprise-grade AI continuous mental health monitoring and distress prediction platform created for SIH 2026 Problem Statement ID SIH26094 under the Ministry of Social Justice and Empowerment (MoSJE).
+
+PROBLEM STATEMENT OVERVIEW & CONTEXT:
 Victims and witnesses of atrocities under the Scheduled Castes and Scheduled Tribes (Prevention of Atrocities) Act, 1989 frequently suffer from prolonged psychological trauma and severe mental distress long after filing a complaint. Existing mechanisms focus almost exclusively on legal and financial compensation, leaving a critical gap in continuous mental health monitoring and early distress intervention.
 
 PROPOSED SOLUTION (KEFI AI):
-KEFI AI (Kinematic Emotion & Forecasting Intervention System) is an enterprise-grade AI continuous monitoring and distress prediction platform developed for the Ministry of Social Justice and Empowerment (MoSJE). Named after the Greek origin Kéfi (Κέφι) — representing inner resilience, emotional vitality, and healing after trauma — KEFI proactively monitors crime victims throughout the legal, investigation, court trial, compensation, and rehabilitation journey.
+KEFI AI (Kinematic Emotion & Forecasting Intervention System) — named after the Greek origin Kéfi (Κέφι) representing inner resilience, emotional vitality, and healing after trauma — proactively monitors crime victims throughout the legal, investigation, court trial, compensation, and rehabilitation journey.
 
 KEY INNOVATIONS & TECHNICAL ARCHITECTURE:
 1. Multichannel Continuous Interaction Hub: Proactively conducts periodic wellness check-ins via IVRS 14566, AI Chatbot, SMS, Mobile App, and Web Portal using digital OTP consent and end-to-end AES-256 encryption.
@@ -60,8 +81,8 @@ Victims of atrocities frequently experience prolonged, unaddressed psychological
 - Economic hardship and loss of livelihood.
 Existing statutory mechanisms under the SC/ST (Prevention of Atrocities) Act 1989 focus on post-hoc monetary compensation and legal procedures, but lack any system for continuous mental health tracking or early distress crisis prediction.
 
-2. KEFI AI SYSTEM ARCHITECTURE & CORE INNOVATION
-KEFI AI (Kinematic Emotion & Forecasting Intervention System) is built specifically for the Ministry of Social Justice and Empowerment (MoSJE) to provide continuous, proactive mental health monitoring and automated intervention dispatch.
+2. KEFI AI SYSTEM ARCHITECTURE & CORE INNOVATION (BY TEAM DEKO - TEAM ID: 141444)
+KEFI AI (Kinematic Emotion & Forecasting Intervention System) is built specifically by Team DEKO (University College of Engineering, Panruti) for the Ministry of Social Justice and Empowerment (MoSJE) to provide continuous, proactive mental health monitoring and automated intervention dispatch.
 
 A. MULTICHANNEL INGESTION & CONSENT
 - Registration via NHAA (14566), Integrated Portal, Mobile App, IVRS, or Web Portal.
