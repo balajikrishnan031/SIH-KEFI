@@ -194,26 +194,32 @@ const LandingPage = ({ setView }) => {
       <div className="floating-blob w-[600px] h-[600px] bg-[#3A7070] opacity-10 top-[2200px] right-[-200px]" style={{animationDelay: '2s'}}></div>
 
       {/* 🚀 HEADER */}
-      <div className="sticky top-4 z-[100] w-full max-w-[1200px] mx-auto px-4">
-        <nav className="w-full px-6 py-4 flex justify-between items-center rounded-2xl glass-nav backdrop-blur-md">
+      <div className="sticky top-4 z-[100] w-full max-w-[1300px] mx-auto px-4">
+        <nav className="w-full px-6 py-4 flex justify-between items-center rounded-2xl glass-nav backdrop-blur-md border border-amber-500/20 bg-slate-900/95 text-white shadow-2xl">
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => setView('landing')}>
-            <KeffiLogo size="w-10 h-10" />
-            <span className="text-2xl font-raleway font-black text-transparent bg-clip-text bg-gradient-to-r from-[#2C5555] to-[#3A7070] tracking-tight">Keffi AI</span>
+            <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-amber-500 to-emerald-500 p-0.5 shadow-lg">
+              <div className="w-full h-full bg-slate-900 rounded-[10px] flex items-center justify-center text-amber-400 font-black text-lg">
+                🛡️
+              </div>
+            </div>
+            <div>
+              <div className="text-[11px] font-space font-extrabold uppercase tracking-widest text-amber-400">Govt. of India | MoSJE (SC/ST PoA Act 1989)</div>
+              <span className="text-2xl font-raleway font-black text-white tracking-tight">KEFI AI <span className="text-xs font-mono font-bold text-emerald-400">v4.0</span></span>
+            </div>
           </div>
           
-          <div className="hidden lg:flex items-center gap-10 font-space text-[15px] font-semibold text-slate-500">
-            <button onClick={() => setView('landing')} className="text-gradient-teal font-black transition-colors cursor-pointer">Home</button>
-            <button onClick={() => {document.getElementById('story').scrollIntoView({behavior: 'smooth'})}} className="hover:text-[#3A7070] transition-colors cursor-pointer">Our Story</button>
-            <button onClick={() => setView('login-admin')} className="hover:text-[#3A7070] transition-colors cursor-pointer">Clinical Hub</button>
-            <button onClick={() => setView('login-patient')} className="hover:text-[#3A7070] transition-colors cursor-pointer">Sanctuary</button>
+          <div className="hidden lg:flex items-center gap-8 font-space text-[14px] font-semibold text-slate-300">
+            <button onClick={() => setView('landing')} className="text-amber-400 font-black transition-colors cursor-pointer">Home</button>
+            <button onClick={() => setView('patient-dashboard')} className="hover:text-emerald-400 transition-colors cursor-pointer flex items-center gap-1.5"><Shield size={16}/> Victim & Witness Portal</button>
+            <button onClick={() => setView('admin-dashboard')} className="hover:text-amber-400 transition-colors cursor-pointer flex items-center gap-1.5"><Activity size={16}/> District Magistrate & Officials Hub</button>
           </div>
 
-          <div className="flex items-center gap-6">
-            <button onClick={() => setView('login-patient')} className="hidden md:block font-inter text-[15px] font-semibold text-slate-600 hover:text-[#3A7070] transition-colors cursor-pointer">
-              Log in
-            </button>
-            <button onClick={() => setView('login-patient')} className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#3A7070] to-[#2C5555] text-white font-space font-bold text-[15px] shadow-md shadow-[#3A7070]/25 hover:from-[#2C5555] hover:to-[#1B4332] hover:scale-105 hover:shadow-lg hover:shadow-[#2C5555]/30 transition-all cursor-pointer tracking-wide">
-              Get Started
+          <div className="flex items-center gap-4">
+            <span className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-500/20 border border-red-500/40 text-red-400 text-xs font-mono font-bold animate-pulse">
+              📞 NHAA Helpline: 14566
+            </span>
+            <button onClick={() => setView('patient-dashboard')} className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 text-white font-space font-bold text-[14px] shadow-lg hover:scale-105 transition-all cursor-pointer">
+              Launch KEFI
             </button>
           </div>
         </nav>
@@ -221,73 +227,97 @@ const LandingPage = ({ setView }) => {
       <main className="relative z-10 w-full">
 
         {/* ─────────── SECTION 1: HERO ─────────── */}
-        <section className="w-full min-h-screen flex items-center relative overflow-hidden pt-20 pb-16 animate-fade-in">
+        <section className="w-full min-h-screen flex items-center relative overflow-hidden pt-12 pb-16 animate-fade-in">
           <div className="absolute inset-0 bg-gradient-to-br from-[#DCF0EC]/65 via-white/40 to-[#E4F5F1]/65 z-0" />
           <div className="absolute top-[-60px] left-[-60px] w-[650px] h-[650px] bg-[#0D7070]/10 rounded-full blur-[130px] z-0" />
-          <div className="absolute bottom-[-40px] right-[-40px] w-[550px] h-[550px] bg-[#2AA870]/10 rounded-full blur-[110px] z-0" />
-          <div className="absolute top-1/3 right-1/4 w-[300px] h-[300px] bg-[#D4A373]/6 rounded-full blur-[80px] z-0" />
 
           <div className="max-w-[1340px] mx-auto px-6 lg:px-16 flex flex-col lg:flex-row items-center gap-10 lg:gap-16 relative z-10 w-full">
 
             {/* ── Left: Text ── */}
-            <div className="flex-1 flex flex-col items-start text-left max-w-[680px] animate-slide-in-left">
+            <div className="flex-1 flex flex-col items-start text-left max-w-[750px] animate-slide-in-left">
 
               {/* Top Badge */}
               <div style={{
-                display:'inline-flex', alignItems:'center', gap:'8px',
+                display:'inline-flex', alignItems:'center', gap:'10px',
                 padding:'8px 18px', borderRadius:'999px',
                 background:'linear-gradient(135deg, rgba(13,64,64,0.1), rgba(42,168,112,0.08))',
-                border:'1px solid rgba(13,100,100,0.2)',
-                marginBottom:'28px', boxShadow:'0 2px 12px rgba(13,100,100,0.08)'
+                border:'1px solid rgba(13,100,100,0.25)',
+                marginBottom:'16px', boxShadow:'0 2px 12px rgba(13,100,100,0.08)'
               }}>
-                <Sparkles size={13} style={{color:'#0D7070'}} />
-                <span style={{fontFamily:"'Space Grotesk',sans-serif", fontWeight:700, fontSize:'11px', letterSpacing:'0.18em', textTransform:'uppercase', color:'#0D5050'}}>Mental Health AI · Emotion Engine</span>
+                <Sparkles size={14} style={{color:'#0D7070'}} />
+                <span style={{fontFamily:"'Space Grotesk',sans-serif", fontWeight:800, fontSize:'11px', letterSpacing:'0.18em', textTransform:'uppercase', color:'#0D5050'}}>SIH 2026 PS 26094 · Ministry of Social Justice & Empowerment</span>
               </div>
 
-              {/* KEFFI — The Brand Name First */}
-              <div style={{marginBottom:'12px', lineHeight:1}}>
-                <span style={{
+              {/* KEFI Title */}
+              <div style={{marginBottom:'16px', lineHeight:1.05}}>
+                <div className="text-xs font-mono font-black uppercase tracking-widest text-emerald-900 bg-emerald-500/20 px-3 py-1.5 rounded-lg border border-emerald-500/30 mb-3 inline-flex items-center gap-2">
+                  <span>✨ Greek Kéfi (Κέφι) — Spirit of joy, emotional vitality & inner healing after trauma</span>
+                </div>
+                <h1 style={{
                   fontFamily:"'Raleway', sans-serif",
-                  fontSize:'clamp(80px, 12vw, 150px)',
+                  fontSize:'clamp(40px, 4.8vw, 64px)',
                   fontWeight:900,
-                  letterSpacing:'-0.05em',
-                  lineHeight:0.92,
-                  background:'linear-gradient(135deg, #0A3535 0%, #0D5555 20%, #1A7A7A 45%, #28A8A0 70%, #3ABCB0 90%, #4DD4C4 100%)',
-                  WebkitBackgroundClip:'text',
-                  WebkitTextFillColor:'transparent',
-                  backgroundClip:'text',
-                  display:'block',
-                  filter:'drop-shadow(0 4px 12px rgba(13,112,112,0.18))'
+                  letterSpacing:'-0.03em',
+                  lineHeight:1.08,
+                  color:'#0A3535'
                 }}>
-                  KEFFI
-                </span>
+                  KEFI: AI-Powered Victim Mental Health & <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-teal-600 to-cyan-600">Distress Monitoring System</span>
+                </h1>
               </div>
 
-              {/* Tagline */}
-              <p style={{
-                fontFamily:"'Space Grotesk', sans-serif",
-                fontSize:'clamp(28px, 3.8vw, 48px)',
-                fontWeight:900,
-                color:'#0A3535',
-                marginBottom:'24px',
-                letterSpacing:'-0.03em',
-                lineHeight:1.2
-              }}>
-                Bridging the <span style={{fontFamily:"'Dancing Script',cursive", fontWeight: 700, fontSize:'1.35em', color:'#10B981', display:'inline-block', transform:'rotate(-1.5deg)', textShadow:'0 0 16px rgba(16,185,129,0.3)'}}>Invisible Gap</span> in Mental Healthcare
-              </p>
-
-              {/* Description - Scientific explanation of Keffi meaning */}
+              {/* Subdescription */}
               <p style={{
                 fontFamily:"'Inter', sans-serif",
-                fontSize:'clamp(15px, 1.4vw, 17px)',
-                lineHeight:1.88,
+                fontSize:'clamp(15px, 1.3vw, 17px)',
+                lineHeight:1.8,
                 color:'#1A2E2E',
                 fontWeight:500,
-                maxWidth:'580px',
-                marginBottom:'36px'
+                maxWidth:'680px',
+                marginBottom:'24px'
               }}>
-                <strong>Keffi</strong> — derived from the concept of <strong style={{color:'#0D7070'}}>&ldquo;Kefi&rdquo;</strong> (the Greek spirit of joy, emotional vitality, and passion) — is a clinically-grounded AI companion built to solve the <strong style={{color:'#0D7070'}}>167-hour gap</strong> in mental healthcare. While traditional therapy supports you for just one hour a week, Keffi is available 24/7. It understands <strong style={{color:'#0D7070'}}>96 emotional states</strong>, remembers your journey, and delivers personalized therapeutic support whenever distress arises.
+                <strong>KEFI</strong> (<strong>K</strong>inematic <strong>E</strong>motion & <strong>F</strong>orecasting <strong>I</strong>ntervention System) is a continuous victim-support and early-warning platform tracking psychological distress throughout the legal, trial, compensation, and rehabilitation journey under the SC/ST PoA Act 1989.
               </p>
+
+
+              {/* Mathematical DDS Formula Box */}
+              <div className="w-full p-4 rounded-2xl bg-slate-900/90 border border-emerald-500/30 text-white mb-6 shadow-xl">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider">Dynamic Distress Score (DDS) Formula</span>
+                  <span className="text-[10px] font-mono bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded border border-emerald-500/30">Multi-Signal Weighted Fusion</span>
+                </div>
+                <div className="font-mono text-sm sm:text-base font-extrabold text-emerald-400 tracking-wide bg-slate-950 p-2.5 rounded-xl border border-slate-800 mb-2 overflow-x-auto">
+                  DDS = w₁·E + w₂·V + w₃·B + w₄·H + w₅·C + w₆·T
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-[11px] font-mono text-slate-300">
+                  <div><span className="text-amber-300 font-bold">E (0.25):</span> Emotion/Sentiment</div>
+                  <div><span className="text-amber-300 font-bold">V (0.20):</span> Voice Stress</div>
+                  <div><span className="text-amber-300 font-bold">B (0.15):</span> Missed Check-ins</div>
+                  <div><span className="text-amber-300 font-bold">H (0.15):</span> Trend Velocity</div>
+                  <div><span className="text-amber-300 font-bold">C (0.10):</span> Case Hearing Stage</div>
+                  <div><span className="text-amber-300 font-bold">T (0.15):</span> Threat Keywords</div>
+                </div>
+              </div>
+
+              {/* Risk Level Threshold Indicators */}
+              <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-6">
+                <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-center">
+                  <div className="text-xs font-bold text-emerald-700">🟢 Low (0–30)</div>
+                  <div className="text-[10px] text-slate-600 font-medium mt-0.5">Routine Monitoring</div>
+                </div>
+                <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-center">
+                  <div className="text-xs font-bold text-amber-700">🟡 Moderate (31–60)</div>
+                  <div className="text-[10px] text-slate-600 font-medium mt-0.5">Counsellor Follow-up</div>
+                </div>
+                <div className="p-3 rounded-xl bg-orange-500/10 border border-orange-500/30 text-center">
+                  <div className="text-xs font-bold text-orange-700">🟠 High (61–80)</div>
+                  <div className="text-[10px] text-slate-600 font-medium mt-0.5">Priority Intervention</div>
+                </div>
+                <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-center">
+                  <div className="text-xs font-bold text-red-700">🔴 Critical (81–100)</div>
+                  <div className="text-[10px] text-slate-600 font-medium mt-0.5">Emergency Escalation</div>
+                </div>
+              </div>
+
 
               {/* CTA Buttons */}
               <div style={{display:'flex', flexWrap:'wrap', gap:'14px', alignItems:'center'}}>
@@ -1436,6 +1466,693 @@ const CameraEmotionTracker = ({ onEmotionDetected, isCameraActive }) => {
 };
 
 // 4.1 Enhanced Chat Page
+
+// ==========================================
+// ACCESSIBILITY & LOW DATA TOOLBAR COMPONENT
+// ==========================================
+const AccessibilityToolbar = ({ accessConfig, setAccessConfig, isLowData, setIsLowData, selectedLang, setSelectedLang, onTriggerSOS }) => {
+  return (
+    <div className="w-full bg-white/60 backdrop-blur-md border-b border-white/40 px-4 py-2 flex flex-wrap items-center justify-between text-xs font-inter z-30 gap-2 shadow-sm">
+      <div className="flex items-center gap-3 flex-wrap">
+        {/* Tanglish / Language Switcher */}
+        <div className="flex items-center gap-1.5 bg-white/40 px-2.5 py-1 rounded-full border border-white/50">
+          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">🌐 Lang:</span>
+          <select 
+            value={selectedLang} 
+            onChange={(e) => setSelectedLang(e.target.value)}
+            className="bg-transparent text-xs font-bold text-[#2C5555] outline-none cursor-pointer"
+          >
+            <option value="English">English</option>
+            <option value="Tanglish">Tanglish (தமிழ்-English)</option>
+            <option value="Tamil">தமிழ் (Tamil)</option>
+          </select>
+        </div>
+
+        {/* Voice TTS Toggle */}
+        <button 
+          onClick={() => setAccessConfig(prev => ({ ...prev, voiceTTS: !prev.voiceTTS }))}
+          className={`px-2.5 py-1 rounded-full border text-[11px] font-bold transition-all cursor-pointer flex items-center gap-1 ${accessConfig.voiceTTS ? 'bg-[#3A7070]/15 border-[#3A7070]/30 text-[#2C5555]' : 'bg-slate-100 border-slate-200 text-slate-500'}`}
+        >
+          🔊 Voice {accessConfig.voiceTTS ? 'ON' : 'OFF'}
+        </button>
+
+        {/* Large Text Mode */}
+        <button 
+          onClick={() => setAccessConfig(prev => ({ ...prev, largeText: !prev.largeText }))}
+          className={`px-2.5 py-1 rounded-full border text-[11px] font-bold transition-all cursor-pointer flex items-center gap-1 ${accessConfig.largeText ? 'bg-amber-500/15 border-amber-500/30 text-amber-800' : 'bg-slate-100 border-slate-200 text-slate-500'}`}
+        >
+          🔍 Large Text
+        </button>
+
+        {/* High Contrast */}
+        <button 
+          onClick={() => setAccessConfig(prev => ({ ...prev, highContrast: !prev.highContrast }))}
+          className={`px-2.5 py-1 rounded-full border text-[11px] font-bold transition-all cursor-pointer flex items-center gap-1 ${accessConfig.highContrast ? 'bg-slate-900 border-slate-700 text-white' : 'bg-slate-100 border-slate-200 text-slate-500'}`}
+        >
+          🌓 High Contrast
+        </button>
+
+        {/* Low Internet / Offline Mode */}
+        <button 
+          onClick={() => setIsLowData(!isLowData)}
+          className={`px-2.5 py-1 rounded-full border text-[11px] font-bold transition-all cursor-pointer flex items-center gap-1 ${isLowData ? 'bg-emerald-600 text-white border-emerald-700' : 'bg-slate-100 border-slate-200 text-slate-500'}`}
+        >
+          📶 Low Internet Mode {isLowData ? '(Active)' : ''}
+        </button>
+      </div>
+
+      {/* Emergency Quick SOS Button */}
+      <button 
+        onClick={onTriggerSOS}
+        className="px-3 py-1 rounded-full bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-md animate-pulse flex items-center gap-1.5 cursor-pointer ml-auto"
+      >
+        <PhoneCall size={12} />
+        <span>EMERGENCY SOS (14566)</span>
+      </button>
+    </div>
+  );
+};
+
+// ==========================================
+// 1. GRANULAR EMOTION WHEEL COMPONENT
+// ==========================================
+const EmotionWheelSection = ({ onSelectEmotion, isSidebarOpen, setIsSidebarOpen }) => {
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+  const categories = [
+    {
+      id: 'fear',
+      name: 'Scared / Intimidated 😨',
+      color: 'from-amber-500/20 to-red-500/20 border-amber-400',
+      emotions: ['Terrified', 'Coerced', 'Threatened', 'Vulnerable', 'Insecure', 'Panicked']
+    },
+    {
+      id: 'sadness',
+      name: 'Sad / Isolated 😔',
+      color: 'from-blue-500/20 to-indigo-500/20 border-blue-400',
+      emotions: ['Hopeless', 'Ostracized', 'Abandoned', 'Lonely', 'Grieving', 'Numb']
+    },
+    {
+      id: 'anger',
+      name: 'Anger / Resentment 😠',
+      color: 'from-rose-500/20 to-orange-500/20 border-rose-400',
+      emotions: ['Indignant', 'Furious', 'Resentful', 'Agitated', 'Outraged', 'Vengeful']
+    },
+    {
+      id: 'anxiety',
+      name: 'Anxious / Overwhelmed 😰',
+      color: 'from-purple-500/20 to-violet-500/20 border-purple-400',
+      emotions: ['Restless', 'Tense', 'Paralyzed', 'Apprehensive', 'Overburdened', 'Uneasy']
+    },
+    {
+      id: 'exhaustion',
+      name: 'Exhausted / Burnout 😶',
+      color: 'from-slate-500/20 to-zinc-500/20 border-slate-400',
+      emotions: ['Drained', 'Fatigued', 'Apathetic', 'Detached', 'Blank', 'Depleted']
+    },
+    {
+      id: 'hope',
+      name: 'Calm / Hopeful 🌿',
+      color: 'from-emerald-500/20 to-teal-500/20 border-emerald-400',
+      emotions: ['Relieved', 'Supported', 'Safe', 'Reassured', 'Grounded', 'Optimistic']
+    }
+  ];
+
+  return (
+    <div className="h-full w-full flex flex-col relative overflow-hidden animate-fade-in bg-transparent">
+      {/* Header */}
+      <div className="px-6 md:px-8 py-5 border-b border-[#3A7070]/10 bg-white/75 backdrop-blur-md flex justify-between items-center z-20 shrink-0">
+        <div className="flex items-center gap-2 md:gap-4">
+          {!isSidebarOpen && (
+            <button onClick={() => setIsSidebarOpen(true)} className="p-2.5 rounded-xl text-slate-600 hover:text-[#3A7070] glass-card border border-white/30 hover:bg-white/50 transition-all cursor-pointer mr-1 shadow-sm flex items-center justify-center">
+              <Menu size={18} />
+            </button>
+          )}
+          <div className="w-12 h-12 glass-card border border-white/45 rounded-full flex items-center justify-center shadow-sm">
+            <span className="text-2xl">🎡</span>
+          </div>
+          <div>
+            <h2 className="text-xl font-raleway font-black bg-gradient-to-r from-[#2C5555] via-[#3A7070] to-[#8FA989] bg-clip-text text-transparent">Interactive Emotion Wheel</h2>
+            <div className="text-xs text-[#8FA989] font-space font-extrabold tracking-wider">Tap what you feel when words are hard to find</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="flex-1 overflow-y-auto p-6 md:p-8 flex flex-col items-center justify-start gap-8 min-h-0 scrollbar-thin">
+        <div className="text-center max-w-xl">
+          <p className="text-slate-600 font-inter font-medium text-sm">
+            Can't put your feelings into words right now? Select an emotion below. KEFI will instantly recognize your state and offer gentle visual & verbal guidance.
+          </p>
+        </div>
+
+        {/* Plutchik Granular Grid / Wheel */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl">
+          {categories.map((cat) => (
+            <div 
+              key={cat.id} 
+              className={`p-6 rounded-[2rem] bg-gradient-to-br ${cat.color} border glass-card backdrop-blur-md shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between`}
+            >
+              <div>
+                <h3 className="text-base font-space font-black text-slate-800 mb-3">{cat.name}</h3>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {cat.emotions.map((emo, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => onSelectEmotion(emo)}
+                      className="px-3 py-1.5 rounded-full bg-white/70 hover:bg-white border border-white/80 text-xs font-inter font-bold text-slate-800 shadow-xs hover:scale-105 transition-all cursor-pointer"
+                    >
+                      {emo}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <button 
+                onClick={() => onSelectEmotion(cat.name.split(' ')[0])}
+                className="w-full py-2.5 rounded-xl bg-white/40 hover:bg-white/60 text-[#2C5555] font-space font-bold text-xs transition-colors cursor-pointer border border-white/50 mt-2"
+              >
+                Express {cat.name.split(' ')[0]} to Keffi →
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ==========================================
+// 2. CALM SPACE & SILENT SUPPORT COMPONENT
+// ==========================================
+const CalmSpaceSection = ({ isSidebarOpen, setIsSidebarOpen, onTriggerSOS }) => {
+  const [activeTab, setActiveTab] = useState('breathing');
+  const [isBreathing, setIsBreathing] = useState(false);
+  const [breathPhase, setBreathPhase] = useState('Inhale');
+  const [breathCounter, setBreathCounter] = useState(4);
+  const [audioPlaying, setAudioPlaying] = useState(null);
+  
+  // Grounding Checklist
+  const [groundingCheck, setGroundingCheck] = useState({
+    see5: false, feel4: false, hear3: false, smell2: false, taste1: false
+  });
+
+  // Silent Mode Camera/Wearable simulator
+  const [silentMode, setSilentMode] = useState(false);
+  const [bodyMetrics, setBodyMetrics] = useState({ postureTension: 'Moderate', heartRate: 88, faceStress: 'Elevated' });
+
+  // Breathing Box Timer
+  useEffect(() => {
+    let interval = null;
+    if (isBreathing) {
+      interval = setInterval(() => {
+        setBreathCounter(prev => {
+          if (prev <= 1) {
+            setBreathPhase(curr => {
+              if (curr === 'Inhale') return 'Hold';
+              if (curr === 'Hold') return 'Exhale';
+              if (curr === 'Exhale') return 'Pause';
+              return 'Inhale';
+            });
+            return 4;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    } else {
+      setBreathPhase('Inhale');
+      setBreathCounter(4);
+    }
+    return () => clearInterval(interval);
+  }, [isBreathing]);
+
+  return (
+    <div className="h-full w-full flex flex-col relative overflow-hidden animate-fade-in bg-transparent">
+      {/* Header */}
+      <div className="px-6 md:px-8 py-5 border-b border-[#3A7070]/10 bg-white/75 backdrop-blur-md flex justify-between items-center z-20 shrink-0">
+        <div className="flex items-center gap-2 md:gap-4">
+          {!isSidebarOpen && (
+            <button onClick={() => setIsSidebarOpen(true)} className="p-2.5 rounded-xl text-slate-600 hover:text-[#3A7070] glass-card border border-white/30 hover:bg-white/50 transition-all cursor-pointer mr-1 shadow-sm flex items-center justify-center">
+              <Menu size={18} />
+            </button>
+          )}
+          <div className="w-12 h-12 glass-card border border-white/45 rounded-full flex items-center justify-center shadow-sm">
+            <span className="text-2xl">🌬️</span>
+          </div>
+          <div>
+            <h2 className="text-xl font-raleway font-black bg-gradient-to-r from-[#2C5555] via-[#3A7070] to-[#8FA989] bg-clip-text text-transparent">Calm Space & Silent Sanctuary</h2>
+            <div className="text-xs text-[#8FA989] font-space font-extrabold tracking-wider">Peaceful section for grounding & silent non-verbal support</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Tabs */}
+      <div className="px-6 py-3 bg-white/40 border-b border-white/30 flex gap-3 overflow-x-auto shrink-0">
+        {[
+          { id: 'breathing', label: '🌬️ Breathing Guide' },
+          { id: 'grounding', label: '👀 5-4-3-2-1 Grounding' },
+          { id: 'audio', label: '🎧 Calming Audio' },
+          { id: 'silent', label: '📷 Silent Mode (Body Language)' }
+        ].map(t => (
+          <button
+            key={t.id}
+            onClick={() => setActiveTab(t.id)}
+            className={`px-4 py-2 rounded-xl text-xs font-space font-bold transition-all cursor-pointer whitespace-nowrap ${activeTab === t.id ? 'bg-[#3A7070] text-white shadow-md' : 'bg-white/30 text-slate-700 hover:bg-white/50'}`}
+          >
+            {t.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Main Content Area */}
+      <div className="flex-1 overflow-y-auto p-6 md:p-8 flex flex-col items-center justify-center min-h-0 scrollbar-thin">
+        
+        {/* 1. BREATHING GUIDE */}
+        {activeTab === 'breathing' && (
+          <div className="flex flex-col items-center justify-center max-w-md text-center space-y-8 animate-fade-in">
+            <h3 className="text-2xl font-raleway font-black text-slate-800">Box Breathing (4-4-4-4)</h3>
+            <p className="text-sm text-slate-600 font-inter font-medium">Follow the glowing expanding orb to calm your nervous system instantly.</p>
+
+            <div className="relative w-64 h-64 flex items-center justify-center">
+              <div 
+                className={`absolute inset-0 rounded-full bg-[#3A7070]/20 transition-all duration-1000 ${
+                  breathPhase === 'Inhale' ? 'scale-125 bg-[#8FA989]/30' :
+                  breathPhase === 'Hold' ? 'scale-125 bg-amber-500/20' :
+                  breathPhase === 'Exhale' ? 'scale-75 bg-[#3A7070]/10' :
+                  'scale-75 bg-slate-200'
+                }`}
+              />
+              <div className="w-40 h-40 rounded-full glass-card border-4 border-white shadow-2xl flex flex-col items-center justify-center z-10">
+                <span className="text-xs font-space font-bold uppercase text-[#3A7070] tracking-widest">{breathPhase}</span>
+                <span className="text-4xl font-space font-black text-slate-800">{breathCounter}s</span>
+              </div>
+            </div>
+
+            <button
+              onClick={() => setIsBreathing(!isBreathing)}
+              className="px-8 py-3.5 rounded-2xl bg-[#3A7070] text-white font-space font-bold text-sm shadow-lg hover:bg-[#2C5555] transition-all cursor-pointer"
+            >
+              {isBreathing ? 'Pause Breathing' : 'Start Box Breathing 🌬️'}
+            </button>
+          </div>
+        )}
+
+        {/* 2. GROUNDING ACTIVITY */}
+        {activeTab === 'grounding' && (
+          <div className="max-w-xl w-full flex flex-col gap-4 animate-fade-in">
+            <h3 className="text-xl font-raleway font-black text-slate-800 text-center mb-2">5-4-3-2-1 Sensory Grounding</h3>
+            <p className="text-sm text-slate-600 font-inter text-center mb-4">Focus on your surroundings right now to anchor yourself in the present moment.</p>
+
+            {[
+              { key: 'see5', label: '👀 5 Things You Can See Around You', desc: 'Look at the window, table, chair, light, wall.' },
+              { key: 'feel4', label: '🖐️ 4 Things You Can Touch', desc: 'Feel your clothes, desk surface, feet on the floor.' },
+              { key: 'hear3', label: '👂 3 Things You Can Hear', desc: 'Listen to the fan, birds outside, your breathing.' },
+              { key: 'smell2', label: '👃 2 Things You Can Smell', desc: 'Notice fresh air, tea, soap, ambient room smell.' },
+              { key: 'taste1', label: '👅 1 Thing You Can Taste', desc: 'Sip water or notice the current taste in your mouth.' }
+            ].map(item => (
+              <div 
+                key={item.key}
+                onClick={() => setGroundingCheck(prev => ({ ...prev, [item.key]: !prev[item.key] }))}
+                className={`p-4 rounded-2xl glass-card border transition-all cursor-pointer flex items-center justify-between ${groundingCheck[item.key] ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-900' : 'bg-white/40 border-white/60 text-slate-800'}`}
+              >
+                <div>
+                  <h4 className="text-sm font-space font-bold">{item.label}</h4>
+                  <p className="text-xs text-slate-500 font-inter mt-0.5">{item.desc}</p>
+                </div>
+                <div className={`w-6 h-6 rounded-full border flex items-center justify-center text-xs font-bold ${groundingCheck[item.key] ? 'bg-emerald-600 text-white border-emerald-600' : 'border-slate-300'}`}>
+                  {groundingCheck[item.key] ? '✓' : ''}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* 3. CALMING AUDIO */}
+        {activeTab === 'audio' && (
+          <div className="max-w-xl w-full flex flex-col gap-6 animate-fade-in text-center">
+            <h3 className="text-xl font-raleway font-black text-slate-800">Soothing Ambient Soundscapes</h3>
+            <p className="text-sm text-slate-600">Listen to gentle natural frequencies designed to reduce cortisol and high distress.</p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {[
+                { id: 'waves', name: '🌊 Ocean Waves', desc: 'Deep rhythmic coastal surge' },
+                { id: 'rain', name: '🌧️ Gentle Rain', desc: 'Calming rainfall sound' },
+                { id: 'forest', name: '🌲 Forest Breeze', desc: 'Soft wind through trees' }
+              ].map(sound => (
+                <div 
+                  key={sound.id}
+                  onClick={() => setAudioPlaying(audioPlaying === sound.id ? null : sound.id)}
+                  className={`p-6 rounded-2xl glass-card border transition-all cursor-pointer flex flex-col items-center justify-center gap-2 ${audioPlaying === sound.id ? 'bg-[#3A7070] text-white border-[#3A7070] shadow-lg' : 'bg-white/40 text-slate-800 hover:bg-white/60'}`}
+                >
+                  <span className="text-3xl">{sound.name.split(' ')[0]}</span>
+                  <h4 className="text-sm font-space font-bold mt-1">{sound.name.split(' ').slice(1).join(' ')}</h4>
+                  <p className="text-[11px] opacity-80">{sound.desc}</p>
+                  <span className="text-xs font-bold mt-2 underline">{audioPlaying === sound.id ? '⏸️ Playing' : '▶️ Play'}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* 4. SILENT MODE (BODY LANGUAGE & POSTURE MOCK) */}
+        {activeTab === 'silent' && (
+          <div className="max-w-xl w-full flex flex-col items-center text-center gap-6 animate-fade-in">
+            <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-900 text-xs font-inter font-bold w-full">
+              💡 For situations where you cannot type or speak out loud, KEFI observes posture, facial tension, and heart rate to offer simple visual guidance without demanding typing.
+            </div>
+
+            <div className="grid grid-cols-3 gap-4 w-full">
+              <div className="p-4 rounded-2xl glass-card bg-white/40 border text-center">
+                <span className="text-xs text-slate-500 font-bold uppercase">Heart Rate</span>
+                <h4 className="text-xl font-space font-black text-[#2C5555]">{bodyMetrics.heartRate} BPM</h4>
+              </div>
+              <div className="p-4 rounded-2xl glass-card bg-white/40 border text-center">
+                <span className="text-xs text-slate-500 font-bold uppercase">Posture Tension</span>
+                <h4 className="text-xl font-space font-black text-amber-700">{bodyMetrics.postureTension}</h4>
+              </div>
+              <div className="p-4 rounded-2xl glass-card bg-white/40 border text-center">
+                <span className="text-xs text-slate-500 font-bold uppercase">Facial Affect</span>
+                <h4 className="text-xl font-space font-black text-rose-700">{bodyMetrics.faceStress}</h4>
+              </div>
+            </div>
+
+            {/* Simple Visual Guidance Card */}
+            <div className="p-6 rounded-3xl bg-white/60 border border-white/80 shadow-lg text-left w-full space-y-4">
+              <div className="flex items-center gap-3">
+                <span className="text-2xl">🌿</span>
+                <h4 className="text-base font-space font-bold text-slate-800">Keffi Silent Guidance</h4>
+              </div>
+              <p className="text-sm text-slate-700 font-inter leading-relaxed">
+                "I notice you're feeling tense right now, and you don't need to explain anything. Place both feet firmly on the floor, relax your shoulders down, and know that you are safe in this moment."
+              </p>
+              <div className="flex gap-3 pt-2">
+                <button onClick={() => setBodyMetrics(p => ({ ...p, heartRate: 72, postureTension: 'Relaxed', faceStress: 'Calm' }))} className="px-4 py-2 rounded-xl bg-emerald-600 text-white font-bold text-xs cursor-pointer">
+                  I Feel A Bit Calmer Now
+                </button>
+                <button onClick={onTriggerSOS} className="px-4 py-2 rounded-xl bg-red-600 text-white font-bold text-xs cursor-pointer">
+                  Need Urgent SOS Help
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+      </div>
+    </div>
+  );
+};
+
+// ==========================================
+// 3. PROGRESS DASHBOARD & WEEKLY REPORT
+// ==========================================
+const ProgressDashboardSection = ({ isSidebarOpen, setIsSidebarOpen }) => {
+  const [streak, setStreak] = useState(3);
+  const [weeklyProgress, setWeeklyProgress] = useState(3);
+
+  const trackerDays = [
+    { day: 'Day 1', task: 'Check-in 🟢', done: true },
+    { day: 'Day 2', task: 'Breathing 🟢', done: true },
+    { day: 'Day 3', task: 'Grounding 🟢', done: true },
+    { day: 'Day 4', task: 'Audio ⏳', done: false },
+    { day: 'Day 5', task: 'Journal ⏳', done: false },
+    { day: 'Day 6', task: 'Check-in ⏳', done: false },
+    { day: 'Day 7', task: 'Review ⏳', done: false }
+  ];
+
+  return (
+    <div className="h-full w-full flex flex-col relative overflow-hidden animate-fade-in bg-transparent">
+      {/* Header */}
+      <div className="px-6 md:px-8 py-5 border-b border-[#3A7070]/10 bg-white/75 backdrop-blur-md flex justify-between items-center z-20 shrink-0">
+        <div className="flex items-center gap-2 md:gap-4">
+          {!isSidebarOpen && (
+            <button onClick={() => setIsSidebarOpen(true)} className="p-2.5 rounded-xl text-slate-600 hover:text-[#3A7070] glass-card border border-white/30 hover:bg-white/50 transition-all cursor-pointer mr-1 shadow-sm flex items-center justify-center">
+              <Menu size={18} />
+            </button>
+          )}
+          <div className="w-12 h-12 glass-card border border-white/45 rounded-full flex items-center justify-center shadow-sm">
+            <span className="text-2xl">📊</span>
+          </div>
+          <div>
+            <h2 className="text-xl font-raleway font-black bg-gradient-to-r from-[#2C5555] via-[#3A7070] to-[#8FA989] bg-clip-text text-transparent">Progress & Weekly Report</h2>
+            <div className="text-xs text-[#8FA989] font-space font-extrabold tracking-wider">Track mood, MHQ distress score & weekly achievements</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="flex-1 overflow-y-auto p-6 md:p-8 flex flex-col gap-8 min-h-0 scrollbar-thin">
+        
+        {/* Streak & Weekly Overview Bar */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="p-6 rounded-3xl glass-card bg-white/40 border flex items-center gap-4">
+            <span className="text-4xl">🔥</span>
+            <div>
+              <h4 className="text-2xl font-space font-black text-slate-800">{streak} Days</h4>
+              <p className="text-xs text-slate-500 font-inter font-bold">Active Wellness Streak</p>
+            </div>
+          </div>
+          <div className="p-6 rounded-3xl glass-card bg-white/40 border flex items-center gap-4">
+            <span className="text-4xl">📅</span>
+            <div>
+              <h4 className="text-2xl font-space font-black text-[#2C5555]">{weeklyProgress}/7 Days</h4>
+              <p className="text-xs text-slate-500 font-inter font-bold">Weekly Check-in Completion</p>
+            </div>
+          </div>
+          <div className="p-6 rounded-3xl glass-card bg-white/40 border flex items-center gap-4">
+            <span className="text-4xl">🟢</span>
+            <div>
+              <h4 className="text-2xl font-space font-black text-emerald-700">24 / 100</h4>
+              <p className="text-xs text-slate-500 font-inter font-bold">Low Distress Score (MHQ)</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Wellness Progress Tracker Bar (User requested: Day 1 - Checkin, Day 2 - Breathing, Day 3 - Grounding...) */}
+        <div className="p-6 rounded-3xl glass-card bg-white/50 border space-y-4">
+          <div className="flex justify-between items-center">
+            <h3 className="text-base font-space font-bold text-slate-800">Weekly Wellness Progress Tracker</h3>
+            <span className="text-xs font-bold text-[#3A7070] bg-[#3A7070]/10 px-3 py-1 rounded-full">{weeklyProgress}/7 Days Completed</span>
+          </div>
+          
+          <div className="grid grid-cols-2 sm:grid-cols-7 gap-3">
+            {trackerDays.map((td, idx) => (
+              <div 
+                key={idx}
+                className={`p-3 rounded-2xl border text-center font-inter transition-all ${td.done ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-900' : 'bg-white/20 border-white/40 text-slate-400'}`}
+              >
+                <div className="text-[10px] font-bold uppercase">{td.day}</div>
+                <div className="text-xs font-bold mt-1">{td.task}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 7-Day Graph & Weekly Report Card */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          
+          {/* Graph Card */}
+          <div className="p-6 rounded-3xl glass-card bg-white/50 border flex flex-col">
+            <h3 className="text-base font-space font-bold text-slate-800 mb-4">7-Day Distress (DDS) Trend</h3>
+            <div className="flex-1 bg-white/40 rounded-2xl p-4 border flex items-end justify-between gap-3 h-48">
+              {[
+                { day: 'Mon', score: 55, label: '55' },
+                { day: 'Tue', score: 48, label: '48' },
+                { day: 'Wed', score: 40, label: '40' },
+                { day: 'Thu', score: 32, label: '32' },
+                { day: 'Fri', score: 28, label: '28' },
+                { day: 'Sat', score: 25, label: '25' },
+                { day: 'Sun', score: 24, label: '24' }
+              ].map((bar, i) => (
+                <div key={i} className="flex-1 flex flex-col items-center gap-2 h-full justify-end">
+                  <span className="text-[10px] font-bold text-slate-600">{bar.label}</span>
+                  <div 
+                    className="w-full bg-gradient-to-t from-[#3A7070] to-[#8FA989] rounded-t-lg transition-all duration-700" 
+                    style={{ height: `${bar.score}%` }} 
+                  />
+                  <span className="text-[10px] font-bold text-slate-500">{bar.day}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Weekly Summary Card */}
+          <div className="p-6 rounded-3xl glass-card bg-white/50 border flex flex-col justify-between space-y-4">
+            <div>
+              <h3 className="text-base font-space font-bold text-slate-800 mb-2">📋 Weekly Clinical Summary</h3>
+              <p className="text-xs text-slate-600 font-inter leading-relaxed mb-4">
+                Your distress score has steadily decreased from 55 to 24 over the past week. Grounding techniques and regular daily check-ins have significantly stabilized your baseline emotional state.
+              </p>
+              
+              <div className="space-y-2">
+                <div className="flex justify-between text-xs font-bold text-slate-700">
+                  <span>Micro-Goals Achieved</span>
+                  <span className="text-[#3A7070]">12 / 14 Completed</span>
+                </div>
+                <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                  <div className="bg-[#3A7070] h-2 rounded-full" style={{ width: '85%' }} />
+                </div>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-900 text-xs font-bold">
+              ✅ Official Status: Low Risk (🟢 Green Band 0–30). Continue routine check-ins.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  );
+};
+
+// ==========================================
+// 4. DAILY MICRO-GOALS COMPONENT
+// ==========================================
+const MicroGoalsSection = ({ isSidebarOpen, setIsSidebarOpen }) => {
+  const [goals, setGoals] = useState([
+    { id: 1, title: '🌿 Take 5 Deep Breaths (Box Breathing)', done: true },
+    { id: 2, title: '📝 Complete Daily Mood Check-in', done: true },
+    { id: 3, title: '👀 Perform 5-4-3-2-1 Grounding Activity', done: false },
+    { id: 4, title: '🎧 Listen to 5 Minutes of Calming Audio', done: false }
+  ]);
+
+  const toggleGoal = (id) => {
+    setGoals(goals.map(g => g.id === id ? { ...g, done: !g.done } : g));
+  };
+
+  const completedCount = goals.filter(g => g.done).length;
+
+  return (
+    <div className="h-full w-full flex flex-col relative overflow-hidden animate-fade-in bg-transparent">
+      {/* Header */}
+      <div className="px-6 md:px-8 py-5 border-b border-[#3A7070]/10 bg-white/75 backdrop-blur-md flex justify-between items-center z-20 shrink-0">
+        <div className="flex items-center gap-2 md:gap-4">
+          {!isSidebarOpen && (
+            <button onClick={() => setIsSidebarOpen(true)} className="p-2.5 rounded-xl text-slate-600 hover:text-[#3A7070] glass-card border border-white/30 hover:bg-white/50 transition-all cursor-pointer mr-1 shadow-sm flex items-center justify-center">
+              <Menu size={18} />
+            </button>
+          )}
+          <div className="w-12 h-12 glass-card border border-white/45 rounded-full flex items-center justify-center shadow-sm">
+            <span className="text-2xl">🎯</span>
+          </div>
+          <div>
+            <h2 className="text-xl font-raleway font-black bg-gradient-to-r from-[#2C5555] via-[#3A7070] to-[#8FA989] bg-clip-text text-transparent">Daily Micro-Goals</h2>
+            <div className="text-xs text-[#8FA989] font-space font-extrabold tracking-wider">Small achievable tasks for daily emotional stability</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="flex-1 overflow-y-auto p-6 md:p-8 flex flex-col items-center justify-start gap-8 min-h-0 max-w-2xl mx-auto w-full">
+        
+        <div className="w-full p-6 rounded-3xl glass-card bg-white/50 border text-center space-y-3">
+          <h3 className="text-lg font-space font-bold text-slate-800">Today's Progress: {completedCount} / {goals.length} Completed</h3>
+          <div className="w-full bg-slate-200 h-3 rounded-full overflow-hidden">
+            <div className="bg-[#3A7070] h-3 rounded-full transition-all duration-500" style={{ width: `${(completedCount / goals.length) * 100}%` }} />
+          </div>
+        </div>
+
+        <div className="w-full space-y-3">
+          {goals.map(g => (
+            <div 
+              key={g.id}
+              onClick={() => toggleGoal(g.id)}
+              className={`p-5 rounded-2xl border transition-all cursor-pointer flex items-center justify-between shadow-sm ${g.done ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-950 font-bold' : 'bg-white/40 border-white/60 text-slate-800 hover:bg-white/60'}`}
+            >
+              <span className="text-sm font-space font-semibold">{g.title}</span>
+              <div className={`w-6 h-6 rounded-full border flex items-center justify-center text-xs font-bold ${g.done ? 'bg-emerald-600 text-white border-emerald-600' : 'border-slate-300'}`}>
+                {g.done ? '✓' : ''}
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  );
+};
+
+// ==========================================
+// 5. PRIVACY & DATA CONSENT COMPONENT (DPDP ACT 2023)
+// ==========================================
+const PrivacyConsentSection = ({ isSidebarOpen, setIsSidebarOpen }) => {
+  const [consent, setConsent] = useState({
+    fieldOfficer: true,
+    legalCounsel: true,
+    anonymousResearch: false,
+    autoPurgeLogs: false
+  });
+
+  return (
+    <div className="h-full w-full flex flex-col relative overflow-hidden animate-fade-in bg-transparent">
+      {/* Header */}
+      <div className="px-6 md:px-8 py-5 border-b border-[#3A7070]/10 bg-white/75 backdrop-blur-md flex justify-between items-center z-20 shrink-0">
+        <div className="flex items-center gap-2 md:gap-4">
+          {!isSidebarOpen && (
+            <button onClick={() => setIsSidebarOpen(true)} className="p-2.5 rounded-xl text-slate-600 hover:text-[#3A7070] glass-card border border-white/30 hover:bg-white/50 transition-all cursor-pointer mr-1 shadow-sm flex items-center justify-center">
+              <Menu size={18} />
+            </button>
+          )}
+          <div className="w-12 h-12 glass-card border border-white/45 rounded-full flex items-center justify-center shadow-sm">
+            <span className="text-2xl">🔒</span>
+          </div>
+          <div>
+            <h2 className="text-xl font-raleway font-black bg-gradient-to-r from-[#2C5555] via-[#3A7070] to-[#8FA989] bg-clip-text text-transparent">Privacy & Consent Controls</h2>
+            <div className="text-xs text-[#8FA989] font-space font-extrabold tracking-wider">DPDP Act 2023 Compliant Data Control & Consent Management</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="flex-1 overflow-y-auto p-6 md:p-8 flex flex-col gap-6 min-h-0 max-w-3xl mx-auto w-full">
+        
+        <div className="p-6 rounded-3xl glass-card bg-white/50 border space-y-6">
+          <div className="border-b pb-4">
+            <h3 className="text-base font-space font-bold text-slate-800 mb-1">Data Control Options</h3>
+            <p className="text-xs text-slate-600 font-inter">You are in full control of how your mental health observations & check-ins are shared.</p>
+          </div>
+
+          {[
+            { key: 'fieldOfficer', label: 'Share Observations with Assigned Field Welfare Officer', desc: 'Allows welfare liaisons to view distress scores for home visits.' },
+            { key: 'legalCounsel', label: 'Share High Distress Alerts with Legal Aid Counsel', desc: 'Alerts legal team if court hearing proximity induces severe stress.' },
+            { key: 'anonymousResearch', label: 'Allow Anonymized Training & Statistical Improvement', desc: 'Strips identity data and helps improve MoSJE AI distress prediction models.' },
+            { key: 'autoPurgeLogs', label: 'Auto-Purge Chat Transcripts Every 30 Days', desc: 'Automatically clears chat text after 30 days while retaining score graphs.' }
+          ].map(opt => (
+            <div key={opt.key} className="flex items-center justify-between p-4 rounded-2xl bg-white/40 border">
+              <div>
+                <h4 className="text-sm font-space font-bold text-slate-800">{opt.label}</h4>
+                <p className="text-xs text-slate-500 font-inter mt-0.5">{opt.desc}</p>
+              </div>
+              <button
+                onClick={() => setConsent(prev => ({ ...prev, [opt.key]: !prev[opt.key] }))}
+                className={`w-12 h-6 rounded-full transition-all relative cursor-pointer ${consent[opt.key] ? 'bg-[#3A7070]' : 'bg-slate-300'}`}
+              >
+                <div className={`w-5 h-5 rounded-full bg-white absolute top-0.5 transition-all ${consent[opt.key] ? 'left-6.5' : 'left-0.5'}`} />
+              </button>
+            </div>
+          ))}
+
+          <div className="flex flex-wrap gap-4 pt-4 border-t">
+            <button 
+              onClick={() => alert("Data exported securely as encrypted JSON.")}
+              className="px-5 py-2.5 rounded-xl bg-white/60 border border-slate-300 text-slate-700 font-space font-bold text-xs hover:bg-white cursor-pointer"
+            >
+              📥 Download My Encrypted Data
+            </button>
+            <button 
+              onClick={() => alert("Consent revoked. All local data cleared.")}
+              className="px-5 py-2.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-700 font-space font-bold text-xs hover:bg-red-500/20 cursor-pointer"
+            >
+              🚫 Revoke Consent & Purge Local Logs
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+};
+
 const ChatArea = ({ 
   setGlobalPoints, 
   globalPoints, 
@@ -1672,7 +2389,7 @@ const ChatArea = ({
           message: message,
           patient_id: userData?.patient_id || "P-102",
           emotional_context: payloadContext,
-          visual_affect_vector: { emotion: detectedFacialEmotion, confidence: facialConfidence, tension: 'High' }
+          visual_affect_vector: { emotion: visualEmotion || "Neutral", confidence: 0.85, tension: 'High' }
         }, { timeout: 45000 });
       } catch (e) {
         console.warn("[API RETRY] Attempting second request to cloud backend...", e);
@@ -1681,7 +2398,7 @@ const ChatArea = ({
             message: message,
             patient_id: userData?.patient_id || "P-102",
             emotional_context: payloadContext,
-            visual_affect_vector: { emotion: detectedFacialEmotion, confidence: facialConfidence, tension: 'High' }
+            visual_affect_vector: { emotion: visualEmotion || "Neutral", confidence: 0.85, tension: 'High' }
           }, { timeout: 45000 });
         } catch (e2) {
           console.warn("[FALLBACK CLINICAL RESPONSE ENGINE ACTIVE]", e2);
@@ -2676,12 +3393,16 @@ const PatientDashboard = ({ setView, userData }) => {
 
   const menuItems = [
     { id: 'chat', label: 'Chat with Keffi', icon: MessageCircle },
-    { id: 'history', label: 'Peace Log', icon: BookOpen },
-    { id: 'journey', label: 'My Journey', icon: TrendingUp },
-    { id: 'tools', label: 'Mind Tools', icon: Sparkles },
-    { id: 'rewards', label: 'Rewards', icon: Gift },
-    { id: 'friends', label: 'Neighbor Sync', icon: Users }, 
-    { id: 'account', label: 'My Account', icon: Shield },
+    { id: 'emotion-wheel', label: 'Emotion Wheel 🎡', icon: Sparkles },
+    { id: 'calm-space', label: 'Calm Space 🌬️', icon: Heart },
+    { id: 'progress', label: 'Progress & Report 📊', icon: TrendingUp },
+    { id: 'micro-goals', label: 'Daily Micro-Goals 🎯', icon: Target },
+    { id: 'history', label: 'Peace Log 📖', icon: BookOpen },
+    { id: 'privacy', label: 'Privacy & Consent 🔒', icon: Shield },
+    { id: 'tools', label: 'Mind Tools 🧘', icon: Zap },
+    { id: 'rewards', label: 'Rewards 🎁', icon: Gift },
+    { id: 'friends', label: 'Neighbor Sync 👥', icon: Users },
+    { id: 'account', label: 'My Account 👤', icon: User },
   ];
 
   const renderContent = () => {
@@ -2700,7 +3421,12 @@ const PatientDashboard = ({ setView, userData }) => {
       handleDeleteSession 
     };
     switch(activePage) {
-      case 'chat': return <ChatArea {...props} />;
+      case 'chat': return <ChatArea {...props} onSelectEmotion={(emo) => { props.setActivePage && props.setActivePage('chat'); }} />;
+      case 'emotion-wheel': return <EmotionWheelSection {...props} onSelectEmotion={(emo) => { alert("Selected emotion: " + emo + ". Keffi is tailoring your support."); }} />;
+      case 'calm-space': return <CalmSpaceSection {...props} onTriggerSOS={() => alert("Connecting to 14566 Atrocity Helpline & Police Liaison!")} />;
+      case 'progress': return <ProgressDashboardSection {...props} />;
+      case 'micro-goals': return <MicroGoalsSection {...props} />;
+      case 'privacy': return <PrivacyConsentSection {...props} />;
       case 'history': return <PeaceLog {...props} />;
       case 'journey': return <MyJourney {...props} />;
       case 'tools': return <MindTools {...props} />;

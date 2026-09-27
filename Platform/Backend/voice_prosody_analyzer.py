@@ -1,54 +1,71 @@
 """
-Keffi AI - Voice Sentiment & Audio Prosody Analyzer
-Analyzes speech pitch (Hz), speech rate (WPM), energy (dB), and pause duration (sec)
-to detect vocal acoustic markers of Panic, Depressive Retardation, and Vocal Distress.
+================================================================================
+MOSJE SC/ST POA ACT 1989 - VOICE STRESS & ACOUSTIC PROSODY ANALYZER
+================================================================================
+Analyzes speech pitch (Hz), vocal tremor (jitter %), speech rate (WPM),
+energy stability (dB), and pause duration to detect vocal acoustic markers
+of panic, severe intimidation distress, and psychomotor trauma slowing.
+================================================================================
 """
 
+import math
 import re
+from typing import Dict, Any, Optional
 
-def analyze_audio_prosody(audio_metadata: dict = None, transcript: str = "") -> dict:
+def analyze_audio_prosody(audio_metadata: Optional[Dict[str, Any]] = None, transcript: str = "") -> Dict[str, Any]:
     """
-    Analyzes vocal acoustic prosody metrics.
-    If real audio array is provided, extracts pitch, energy, WPM, and silence gaps.
+    Analyzes vocal acoustic prosody metrics for IVRS 14566 & mobile audio streams.
     """
     if not audio_metadata:
-        # Default baseline simulation based on transcript length and punctuation
-        word_count = len(transcript.split())
-        has_exclamation = "!" in transcript
+        # Transcript-based acoustic heuristics
+        word_count = len(transcript.split()) if transcript else 10
+        has_threat_words = any(w in transcript.lower() for w in ["kill", "threat", "dhamki", "attack", "fear", "scared", "court", "bayam"])
         has_ellipsis = "..." in transcript
         
-        speech_rate_wpm = 180 if has_exclamation else 75 if has_ellipsis else 130
-        avg_pitch_hz = 245.0 if has_exclamation else 115.0 if has_ellipsis else 165.0
-        pause_duration_sec = 0.4 if has_exclamation else 2.8 if has_ellipsis else 0.8
-        energy_db = 78.0 if has_exclamation else 42.0 if has_ellipsis else 60.0
+        speech_rate_wpm = 175 if has_threat_words else 80 if has_ellipsis else 130
+        avg_pitch_hz = 240.0 if has_threat_words else 120.0 if has_ellipsis else 165.0
+        pause_duration_sec = 0.5 if has_threat_words else 2.6 if has_ellipsis else 0.9
+        energy_db = 76.0 if has_threat_words else 44.0 if has_ellipsis else 62.0
+        vocal_jitter_pct = 4.8 if has_threat_words else 1.2
     else:
         speech_rate_wpm = audio_metadata.get("speech_rate_wpm", 130)
         avg_pitch_hz = audio_metadata.get("avg_pitch_hz", 165.0)
-        pause_duration_sec = audio_metadata.get("pause_duration_sec", 0.8)
-        energy_db = audio_metadata.get("energy_db", 60.0)
+        pause_duration_sec = audio_metadata.get("pause_duration_sec", 0.9)
+        energy_db = audio_metadata.get("energy_db", 62.0)
+        vocal_jitter_pct = audio_metadata.get("vocal_jitter_pct", 1.8)
 
-    # Acoustic Vocal Classification Rules
-    if speech_rate_wpm > 165 or avg_pitch_hz > 220:
-        vocal_state = "Panic / Acute Agitation"
+    # Compute Vocal Acoustic Distress Index (0.0 to 1.0)
+    jitter_norm = min(1.0, vocal_jitter_pct / 5.0)
+    pitch_norm = min(1.0, abs(avg_pitch_hz - 160.0) / 100.0)
+    pause_norm = min(1.0, pause_duration_sec / 3.0)
+    
+    vocal_stress_index = round((jitter_norm * 0.45) + (pitch_norm * 0.30) + (pause_norm * 0.25), 2)
+
+    # Acoustic Vocal Classification Rules for Atrocity Trauma
+    if vocal_stress_index > 0.55:
+        vocal_state = "High Intimidation Vocal Tremor / Acute Agitation"
         somatic_override_recommended = True
-        clinical_vocal_insight = "High pitch & rapid speech rate indicate sympathetic nervous system arousal (Panic Spike)."
-    elif speech_rate_wpm < 85 or pause_duration_sec > 2.0:
-        vocal_state = "Depressive Psychomotor Retardation"
+        clinical_vocal_insight = f"Elevated vocal jitter ({vocal_jitter_pct}%) and pitch tremor ({round(avg_pitch_hz)} Hz) indicate high psychological intimidation stress."
+    elif pause_duration_sec > 2.0 or speech_rate_wpm < 85:
+        vocal_state = "Traumatic Withdrawal / Psychomotor Slowing"
         somatic_override_recommended = False
-        clinical_vocal_insight = "Low pitch, slow speech rate, and prolonged pauses indicate depressive psychomotor slowing."
+        clinical_vocal_insight = "Prolonged vocal pause gaps and speech slowing reflect trial exhaustion and post-traumatic fear."
     else:
         vocal_state = "Emotional Equilibrium"
         somatic_override_recommended = False
-        clinical_vocal_insight = "Vocal acoustic metrics remain within normal baseline range."
+        clinical_vocal_insight = "Vocal acoustic prosody remains within nominal baseline range."
 
     return {
         "vocal_state": vocal_state,
+        "vocal_stress_index": vocal_stress_index,
         "metrics": {
             "avg_pitch_hz": round(avg_pitch_hz, 1),
             "speech_rate_wpm": speech_rate_wpm,
             "pause_duration_sec": round(pause_duration_sec, 2),
-            "energy_db": round(energy_db, 1)
+            "energy_db": round(energy_db, 1),
+            "vocal_jitter_pct": round(vocal_jitter_pct, 2)
         },
         "somatic_override_recommended": somatic_override_recommended,
         "clinical_vocal_insight": clinical_vocal_insight
     }
+
