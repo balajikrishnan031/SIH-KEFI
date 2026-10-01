@@ -44,7 +44,7 @@ MedTech / BioTech / HealthTech
 PROJECT OVERVIEW & CONTEXT (TEAM DEKO - TEAM ID: 141444)
 We built KEFI AI to solve a critical institutional blind spot in India's criminal justice system. Under the Scheduled Castes and Scheduled Tribes (Prevention of Atrocities) Act, 1989, when an individual registers a First Information Report (FIR), the state machinery steps in with legal procedures, police investigations, and statutory financial relief under Rule 12(4). However, our extensive review of post-complaint case histories reveals that the victim's true ordeal often begins after filing the complaint. Survivors and prosecution witnesses face systemic community pressure, direct intimidation by perpetrators to force case withdrawal, social boycotts, economic boycotts, and crushing anxiety stemming from multi-year court adjournments. Existing administrative workflows have no mechanism to observe whether a survivor is quietly slipping into severe depressive withdrawal, experiencing acute PTSD, or contemplating suicide under threats. 
 
-KEFI AI (Kinematic Emotion & Forecasting Intervention System) is our production-ready, trauma-informed digital health platform engineered to provide continuous, proactive mental health monitoring and crisis prediction for atrocity victims throughout the multi-year lifecycle of their legal case. Rather than waiting for a survivor to suffer a mental breakdown or succumb to coercion, KEFI AI maintains a gentle, respectful daily presence across multiple accessible channels, extracts multi-signal emotional indicators, calculates a daily Dynamic Distress Score (DDS), forecasts psychological crises 72 hours before they manifest, and automatically alerts District Magistrates (DMs), Superintendents of Police (SPs), and welfare officers for immediate intervention.
+KEFI AI (Kinematic Emotion & Forecasting Intervention System) is our production-ready, trauma-informed digital health platform engineered to provide continuous, proactive mental health monitoring and crisis prediction for atrocity victims throughout the multi-year lifecycle of their legal case. Rather than waiting for a survivor to suffer a mental breakdown or succumb to coercion, KEFI AI maintains a gentle, respectful daily presence across multiple accessible channels, extracts multi-signal emotional indicators, calculates a daily Dynamic Distress Score (DDS), forecasts psychological crises 72 hours before they manifest, and automatically alerts District Magistrates (DMs), Superintendents of Police (SPs), State Nodal Officers, and welfare administrators for immediate intervention.
 
 MULTICHANNEL ENGAGEMENT & ETHICAL ONBOARDING
 Atrocity victims come from diverse educational, linguistic, and socio-economic backgrounds. A smartphone-only mobile application will fail to reach rural communities. Therefore, we designed KEFI AI as an omnichannel engine accessible through:
@@ -56,29 +56,31 @@ Onboarding occurs strictly through explicit informed consent aligned with Sectio
 
 MULTIMODAL SIGNAL EXTRACTION & THE DYNAMIC DISTRESS SCORE (DDS)
 Human trauma does not reveal itself solely in explicit words; it reflects in altered vocal patterns, prolonged delays in responding, and shifts in conversational sentiment. KEFI AI processes four distinct telemetry streams while strictly respecting victim privacy:
-- Linguistic & Sentiment Analysis: Fine-tuned Indic-BERT and XLM-RoBERTa models analyze text inputs for sentiment polarity, feelings of hopelessness, and high-risk intimidation keywords ("threat", "court", "withdraw", "compromise", "kill", "dhamki").
+- Linguistic & Sentiment Analysis: Fine-tuned Indic-BERT models analyze text inputs for sentiment polarity, feelings of hopelessness, and high-risk intimidation keywords ("threat", "court", "withdraw", "compromise", "kill", "dhamki").
 - Acoustic Voice Prosody Processing: Using lightweight digital signal processing (librosa pipeline running on 20ms audio windows), the system extracts vocal jitter, shimmer, pitch frequency variability, and pause length ratios from voice check-ins, generating a normalized Voice Stress Index (VSI).
 - Behavioral Responsiveness Tracking: The system monitors non-verbal behavioral shifts, such as suddenly missed check-ins, prolonged response latencies, and erratic interaction timings that often signal external intimidation or severe depressive immobilization.
 - Judicial Case Context: The engine correlates distress trends with proximity to critical court milestones, including chargesheet filings, bail hearings, and cross-examinations.
-
-These dimensions are synthesized into our proprietary Dynamic Distress Score (DDS), a normalized index from 0 to 100 governed by the formula:
+These dimensions are synthesized into our proprietary Dynamic Distress Score (DDS), a normalized index from 0 to 100 governed by:
 DDS = 0.25*E + 0.20*V + 0.15*B + 0.15*H + 0.10*C + 0.15*T
-Where E represents conversational emotion valence, V represents voice acoustic stress, B represents behavioral check-in friction, H represents historical trend velocity, C represents court hearing proximity, and T represents threat keyword density.
 
-PREDICTIVE CRISIS FORECASTING & EXPLAINABLE AI (XAI)
-A static score is insufficient for preventing suicide or witness intimidation. KEFI AI models longitudinal distress trajectories using time-series trend velocity (dDDS/dt). By evaluating the rate of change over rolling 7-day windows, our system forecasts distress levels 72 hours into the future. When a survivor's trajectory threatens to cross critical thresholds, the platform triggers preventive intervention before an emergency occurs.
+72-HOUR CRISIS FORECASTING & MULTI-DOMAIN INTERVENTION ENGINE
+Static monitoring merely records trauma after it peaks. KEFI AI models longitudinal distress trajectories using time-series trend velocity (dDDS/dt). By evaluating the rate of change over rolling 7-day windows, our system forecasts distress levels 72 hours into the future. When a survivor's trajectory threatens to cross critical thresholds, the platform triggers preventive intervention before an emergency occurs.
 
-To ensure district authorities trust and act upon these recommendations, our platform implements Explainable AI (XAI) powered by SHAP and LIME algorithms. When an alert reaches a District Magistrate or Superintendent of Police, the dashboard does not present an opaque score. Instead, it provides a transparent point attribution breakdown (for example: Base Distress: 28 | Threat Keywords: +21 | Voice Acoustic Jitter: +14 | Missed Check-ins: +12 | Court Trial Proximity: +9 | Projected 72h Score: 84 - RED BAND). This gives protection officers immediate, actionable clarity on whether an intervention requires police witness protection, legal aid counsel, or psychiatric hospitalization.
+Crucially, our system does not issue generic alerts. It runs a specialized Context-Aware Statutory Recommendation Engine that uses NLP intent detection and acoustic thresholds to recommend four targeted interventions:
+1. Medical Treatment & Psychiatric Care: Triggered by somatic trauma cues, panic attacks, or extreme acoustic jitter -> Direct dispatch to District Hospital, 108 EMS, and tele-MANAS 24/7 psychiatric support.
+2. Relocation Support & Witness Sanctuary: Triggered by spatial intimidation, midnight incursions, or arson threats under Section 15A(6)(b) -> Recommends DM/SP to activate emergency government safehouse transit, travel stipend, and secure housing.
+3. Legal Aid & Special Public Prosecutor (SPP) Assistance: Triggered by compromise pressure, court date anxiety, or trial fear -> Auto-notifies District Legal Services Authority (DLSA) to assign a senior empaneled advocate under Section 15A(11).
+4. Financial Assistance & Livelihood Relief: Triggered by economic distress, wage denial, or delayed relief under Rule 12(4) -> Auto-flags District Welfare Officer for expedited Direct Benefit Transfer (DBT).
 
-TRIAGED ESCALATION & MEASURABLE SOCIETAL IMPACT
-KEFI AI routes cases through a three-tier intervention matrix:
-- Green Band (DDS 0-30): Normal baseline. The system delivers automated daily affirmation check-ins, box-breathing exercises, and informative legal rights explainers.
-- Orange Band (DDS 31-60): Moderate distress. Check-in cadence accelerates to twice daily, self-help grounding tools are recommended, and an automated appointment is scheduled with an assigned tele-MANAS or District Mental Health Programme counsellor.
-- Red Band (DDS 61-100): High distress or critical threat. The system instantly generates an emergency alert on the District Magistrate and SP Command Dashboard, transmits automated SMS dispatches to designated Sub-Divisional Protection Officers, and initiates witness safety protocols under Section 15A of the SC/ST Act.
+3-TIER ADMINISTRATIVE DASHBOARD HIERARCHY (DISTRICT -> STATE -> NATIONAL)
+To operationalize accountability across federal and provincial jurisdictions, KEFI AI delivers a three-tier dashboard architecture:
+- District Level (DM, SP, SDPO, DLSA): Case-level real-time telemetry, SHAP explainable decision cards (+21 threat keyword, +14 vocal jitter, +12 missed check-ins), and direct crisis team dispatch.
+- State Level (State Nodal Officer / Principal Secretary, Social Welfare & ADGP Human Rights): Statewide macro heatmaps, district-to-district distress velocity comparisons, inter-district clinical counselor redistribution, and statewide Rule 12(4) compensation compliance monitoring.
+- National Level (Ministry of Social Justice and Empowerment - MoSJE Central Command): Centrally sponsored scheme monitoring, nationwide vulnerability hot-spot identification, policy effectiveness metrics, and automated reporting to parliamentary committees.
 
 By shifting administrative care from reactive post-crisis triage to proactive longitudinal monitoring, KEFI AI safeguards human dignity, eliminates secondary victimization, drastically reduces witness hostility caused by unaddressed coercion, and ensures India's justice machinery actively protects its most vulnerable citizens.
 ```
-*(Exact Length: 7115 Characters — strictly complies with the <= 10,000 characters limit)*
+*(Exact Length: 7386 Characters — strictly complies with the <= 10,000 characters limit)*
 
 ---
 
@@ -161,40 +163,53 @@ Acceleration = d^2(DDS) / dt^2
 
 A lightweight autoregressive LSTM / Exponential Smoothing model projects the expected distress curve over subsequent 24-hour, 48-hour, and 72-hour horizons. If a survivor's current DDS is 48 (Orange Band) but exhibiting a steep velocity of +12 points/day due to an upcoming bail hearing and sudden missed check-ins, the forecasting engine projects a 72-hour score of 84 (Red Band). This triggers proactive protective intervention before the victim reaches a breaking point.
 
-6. EXPLAINABLE AI (XAI) & DISTRICT ADMINISTRATIVE HUD
-A severe flaw in modern AI deployments within public administration is the "black-box" dilemma. A District Magistrate, Superintendent of Police, or District Welfare Officer cannot legally dispatch a police escort or crisis team based solely on an unexplained percentage score.
+6. CONTEXT-AWARE MULTI-DOMAIN INTERVENTION ENGINE (AI NLP RECOMMENDATION LOGIC)
+Problem Statement SIH26094 explicitly mandates that the system provide targeted recommendations across four vital administrative domains. KEFI AI implements a multi-class NLP intent classifier and threshold logic that translates distress patterns into concrete statutory actions:
 
-KEFI AI integrates SHAP (SHapley Additive exPlanations) and LIME to generate instantaneous, human-readable Decision Cards on the Officer Command Dashboard. When an alert fires, the system presents an audit-ready point attribution:
-- Baseline Risk Contribution: +22 points (Persistent trauma symptoms)
-- Threat Keyword Trigger: +21 points (Explicit references to case withdrawal threats)
-- Acoustic Prosody Tension: +14 points (Severe vocal jitter and tremor in last voice note)
-- Behavioral Check-in Absence: +12 points (Two consecutive missed check-in cycles)
-- Judicial Hearing Proximity: +9 points (High Court bail hearing scheduled in 48 hours)
-- Total Computed DDS: 78 / 100 (CRITICAL RED BAND)
-- Recommended Statutory Action: Urgent witness protection dispatch under Section 15A; assignment of senior tele-MANAS clinical psychologist.
+A. Medical Treatment & Psychiatric Care
+- AI Trigger Conditions: High emotional hopelessness markers (E > 65), acoustic speech jitter > 2.8%, prolonged pause ratios (> 45%), or explicit text references to insomnia, severe panic, chest tightness, physical injuries, or self-harm thoughts.
+- System Action: Instantly generates a priority medical referral card on the District Health Officer and DM dashboards. Automatically establishes an emergency telephonic bridge with tele-MANAS (14416) or the nearest District Government Hospital psychiatric emergency unit, and dispatches 108 Emergency Medical Services if acute physical harm is detected.
 
-This transparency empowers judicial and police officers to make rapid, defensible, and legally sound decisions without second-guessing algorithmic recommendations.
+B. Safe Relocation Support & Witness Sanctuary (Section 15A(6)(b))
+- AI Trigger Conditions: High threat keyword density (T > 60), detection of spatial threat phrases ("veetukku vanthu merattunaanga", "house surrounded", "arson", "midnight visit", "village boycott", "they will kill if I go outside"), or sudden complete cessation of check-ins following verified intimidation.
+- System Action: Formulates an immediate statutory relocation recommendation under Section 15A of the SC/ST (PoA) Act. The dashboard alerts the District Magistrate and Superintendent of Police to immediately authorize: (1) Temporary transit accommodation in a government safehouse or secure guest house, (2) Travel stipend disbursement, and (3) Physical police escort for immediate evacuation from the hostile village.
 
-7. INSTITUTIONAL 3-TIER ACTION MATRIX
+C. Legal Aid & Special Public Prosecutor (SPP) Assistance (Section 15A(11))
+- AI Trigger Conditions: Judicial anxiety spikes (C > 70), text references to coercive compromise ("settle panna solraanga", "case vaabass vaanga solraanga", "vakil varala", "defense lawyer threatened"), or procedural confusion surrounding chargesheet filings or bail hearings.
+- System Action: Generates an automated statutory legal aid requisition to the Member Secretary of the District Legal Services Authority (DLSA). Recommends the immediate appointment of an empaneled senior advocate or independent legal counsel under Section 15A(11), and schedules an urgent case briefing with the designated Special Public Prosecutor (SPP) of the Special Court.
+
+D. Expedited Financial Assistance & Livelihood Relief (Rule 12(4))
+- AI Trigger Conditions: Detection of economic starvation, wage boycott, agricultural employment denial, loss of sole earning family member, or pending statutory compensation installments past the 7-day mandate under Rule 12(4).
+- System Action: Automatically cross-references the state treasury portal and flags the District Social Welfare Officer (DSWO) and District Collector. Formulates an expedited Direct Benefit Transfer (DBT) sanction docket for instant release of the mandated 25%, 50%, or 100% relief slab into the victim's verified Aadhaar-linked bank account.
+
+7. 3-TIER ADMINISTRATIVE COMMAND HIERARCHY (DISTRICT -> STATE -> NATIONAL)
+Public administration in India operates across strict federal and state hierarchies. To ensure seamless coordination without jurisdictional confusion, KEFI AI provides tailored dashboard views across all three governing levels:
+
+A. District Level Command HUD (DM, SP, SDPO & DLSA)
+- Designed for tactical, case-by-case intervention and rapid field response.
+- Displays individual beneficiary cards with live Dynamic Distress Scores, 7-day velocity curves, and real-time audio prosody stress meters.
+- Implements Explainable AI (SHAP / LIME) decision attribution cards (e.g., Base: 24 | Threat Keywords: +21 | Voice Jitter: +14 | Missed Check-ins: +12 | Court Trial Proximity: +9 | Projected 72h DDS: 80 - RED BAND).
+- Empowers the District Magistrate and SP to authorize one-click witness protection deployment, psychiatric ambulance dispatch, or DLSA advocate assignment.
+
+B. State Level Command Dashboard (State Nodal Officer / Principal Secretary & ADGP Human Rights)
+- Designed for inter-district resource allocation, macro-level oversight, and legislative compliance.
+- Visualizes statewide district-by-district distress heatmaps, identifying emerging caste violence clusters and regional tension hotspots before communal unrest spreads.
+- Tracks statewide compliance metrics under Rule 12(4) of the SC/ST (PoA) Rules, highlighting districts lagging behind the mandatory 7-day relief disbursement timeline.
+- Facilitates the dynamic redistribution of mobile tele-counselling teams, psychiatric social workers, and Special Public Prosecutors from low-burden districts to overburdened tribal or rural districts.
+
+C. National Level Central Command HUD (Ministry of Social Justice and Empowerment - MoSJE Central Command)
+- Designed for strategic policymaking, centrally sponsored scheme oversight, and national statutory reporting.
+- Aggregates anonymized macro telemetry across all 700+ districts and 36 States/UTs in India.
+- Evaluates the national impact and effectiveness of the National Helpline Against Atrocities (14566) and Centrally Sponsored Schemes for SC/ST protection.
+- Automatically generates auditable, data-driven annual reports for the National Commission for Scheduled Castes (NCSC), National Commission for Scheduled Tribes (NCST), and Parliamentary Standing Committees.
+
+8. INSTITUTIONAL 3-TIER ACTION MATRIX
 KEFI AI translates predictive insights into concrete administrative standard operating procedures:
+- Green Band (DDS 0 - 30): Normal baseline. Routine check-in frequency once every 48 hours. Delivers self-guided resilience audio, multilingual psychoeducation stories, Plutchik emotion journaling, Box Breathing visualizers, and digital SC/ST Act rights booklets.
+- Orange Band (DDS 31 - 60): Moderate distress. Check-in frequency accelerates to twice daily (morning and evening). Automatically alerts the assigned District Welfare Officer or NGO social worker, and schedules an appointment with a tele-MANAS counsellor (14416) or district hospital psychiatrist.
+- Red Band (DDS 61 - 100): High crisis / critical threat. Instantly generates emergency SMS and dashboard push alerts to the DM, SP, and SDPO. Activates Section 15A witness protection, dispatches local police personnel to verify physical safety, and establishes an immediate telephonic bridge with an emergency psychiatric counselor while alerting DLSA.
 
-A. Green Band (DDS 0 - 30): Mild or Baseline State
-- Routine check-in frequency: Once every 48 hours.
-- Intervention: Self-guided resilience support, multilingual psychoeducation audio stories, Plutchik emotion journaling, and automated progress badges.
-- Victim Resources: Access to pre-loaded Box Breathing visualizers and digital booklets on SC/ST Act rights and legal entitlements.
-
-B. Orange Band (DDS 31 - 60): Moderate Distress State
-- Check-in frequency: Increased to twice daily (morning and evening).
-- Automated Intervention: Triggers an automated notification to the assigned District Welfare Officer or NGO social worker.
-- Clinical Support: Automated scheduling of a tele-counselling consultation with the nearest district hospital psychiatrist or tele-MANAS nodal centre (14416).
-- Legal Guidance: Transmits informative updates regarding case status to reduce anxiety caused by procedural ambiguity.
-
-C. Red Band (DDS 61 - 100): High Crisis / Threat State
-- Immediate Action: Automatically issues high-priority SMS and dashboard push alerts to the District Magistrate, District Superintendent of Police, and Sub-Divisional Police Officer (SDPO).
-- Witness Protection Protocol: Activates Section 15A of the SC/ST (PoA) Act, dispatching local protection personnel to verify victim physical safety.
-- Emergency Escalation: System establishes an immediate, direct telephonic bridge between the victim and a certified crisis counselor while alerting the District Legal Services Authority (DLSA).
-
-8. DATA PRIVACY, LEGAL COMPLIANCE & ETHICAL GOVERNANCE
+9. DATA PRIVACY, LEGAL COMPLIANCE & ETHICAL GOVERNANCE
 Handling the mental health and legal data of vulnerable citizens demands the highest standards of data security and constitutional ethics:
 - Digital Personal Data Protection (DPDP) Act, 2023 Compliance:
   * Section 6(1) Explicit Consent: Collected digitally with multi-language voice and text explainers detailing exactly how data will be analyzed.
@@ -206,7 +221,7 @@ Handling the mental health and legal data of vulnerable citizens demands the hig
   * End-to-End Anonymization: Conversational text and voice logs are stripped of Personally Identifiable Information (PII) before passing into AI inference pipelines. Officer dashboards display pseudonymized tokens (e.g., Case Token: #POA-TN-2026-0891) unless an emergency Red Band override is authorized by the District Magistrate.
   * Immutable Audit Trails: Every officer view, score calculation, and intervention dispatch is logged onto a SHA-256 tamper-evident append-only ledger for judicial scrutiny.
 
-9. FIELD IMPLEMENTATION ROADMAP & COST ECONOMICS
+10. FIELD IMPLEMENTATION ROADMAP & COST ECONOMICS
 We developed KEFI AI with an uncompromising focus on frugal engineering and fiscal sustainability:
 - Pilot Phase (Months 1 - 3): Deployment across 5 high-burden districts in Tamil Nadu in active collaboration with District Social Welfare Offices, DLSA, and local Special Courts. Onboarding 1,000 active survivors across diverse rural and semi-urban taluks.
 - State-Wide Integration (Months 4 - 6): Integration with state police CCTNS (Crime and Criminal Tracking Network & Systems) and the National Helpline Against Atrocities (14566) call routing infrastructure.
@@ -216,15 +231,15 @@ Cost Feasibility:
 - Cloud Inference Optimization: By quantizing our transformer models (INT8 precision) and utilizing serverless event-driven architecture on open-source frameworks (FastAPI, PostgreSQL, Redis, n8n), the operational compute cost per beneficiary is less than ₹0.15 per daily check-in.
 - Telephony Economics: Leveraging existing government toll-free infrastructure (14566 and 14416) ensures negligible recurring telecommunications costs for both the state and the victim.
 
-10. EXPECTED TANGIBLE OUTCOMES & SOCIETAL IMPACT
+11. EXPECTED TANGIBLE OUTCOMES & SOCIETAL IMPACT
 Deploying KEFI AI delivers five transformative outcomes aligned with national priorities:
 1. Early Identification of Trauma: Intercepting mental health crises and preventing survivor suicides through continuous, non-intrusive monitoring.
 2. Comprehensive Psychological Rehabilitation: Operationalizing the long-neglected psycho-social mandate of Rule 12(4) of the SC/ST (PoA) Rules by connecting victims directly to professional psychiatric and counselling networks.
 3. Enhanced Witness Protection & Conviction Integrity: Preventing witness hostility and forced case retractions by detecting intimidation early and activating Section 15A protection protocols, directly improving conviction rates in Special Courts.
-4. Intelligent Welfare Resource Allocation: Providing District Magistrates and MoSJE leadership with real-time district-level distress heatmaps, enabling data-driven deployment of counsellors, legal aid clinics, and rehabilitation funds.
+4. Intelligent Welfare Resource Allocation: Providing District Magistrates, State Nodal Officers, and MoSJE leadership with real-time distress heatmaps, enabling data-driven deployment of counsellors, legal aid clinics, and rehabilitation funds.
 5. Restoration of Human Dignity: Rebuilding the survivor's faith in the constitutional justice system by ensuring they are never abandoned to suffer in silence after lodging a complaint.
 ```
-*(Exact Length: 17666 Characters — strictly complies with the <= 50,000 characters limit)*
+*(Exact Length: 21289 Characters — strictly complies with the <= 50,000 characters limit)*
 
 ---
 
@@ -235,10 +250,10 @@ Deploying KEFI AI delivers five transformative outcomes aligned with national pr
 - **Slide Count**: Exactly 5 standard SIH-compliant widescreen slides
 - **Contents**:
   - Slide 1: Cover Slide with Official MoSJE Theme, Team DEKO details, and Problem ID SIH26094.
-  - Slide 2: Ground-Level Problem Statement, SC/ST Act Context, and Statutory Shortcomings.
-  - Slide 3: Proposed Solution, Multichannel Access (IVRS 14566, Chat, SMS), and Core Innovations.
-  - Slide 4: Technical Architecture, Mathematical DDS Formula, 72h Forecasting, XAI & Security.
-  - Slide 5: All 5 Expected Outcomes mapped directly with 5 authentic, high-resolution screenshots from the live KEFFI Chatbot platform.
+  - Slide 2: Ground-Level Problem Statement, SC/ST Act Context, Statutory Shortcomings, and 3-Tier Command HUD (District -> State -> National).
+  - Slide 3: Proposed Solution, Multichannel Access (IVRS 14566, Chat, SMS), 20ms Acoustic DSP, Mathematical DDS Formula, and AI Statutory Multi-Domain Recommendation Engine.
+  - Slide 4: Feasibility & Viability Analysis, DPDP Act 2023 Compliance, SHA-256 Audit Trail, and Problem vs Solution Matrix.
+  - Slide 5: All 5 Expected Outcomes mapped directly with 5 authentic, high-resolution screenshots from the live KEFFI Chatbot platform (Tanglish Chat, Plutchik Wheel, Box Breathing, 7-Day DDS Trend, Officer HUD) + Targeted Statutory Redress.
 
 ---
 *Created by Team DEKO (Team ID: 141444) for Smart India Hackathon 2026 | Problem Statement: SIH26094*
